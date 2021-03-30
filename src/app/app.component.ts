@@ -27,6 +27,25 @@ export class AppComponent {
       name: "Montenegro"
     }
   ];
+
+  public countries2 = [
+    {
+      id: 1,
+      name: "asdsa"
+    },
+    {
+      id: 2,
+      name: "dddd"
+    },
+    {
+      id: 3,
+      name: "sssss"
+    },
+    {
+      id: 4,
+      name: "eeeee"
+    }
+  ];
   constructor(private fb: FormBuilder) {
     this.providerForm = this.fb.group({
       test: [""]

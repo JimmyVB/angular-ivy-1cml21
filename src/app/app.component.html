@@ -6,28 +6,42 @@
        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
 
-<div class="ng-autocomplete">
-  <form [formGroup]="providerForm">
-  <ng-autocomplete
-    [data]="countries"
-    [searchKeyword]="keyword"
-    placeHolder="Enter the Country Name"
-    formControlName="test"
-    [itemTemplate]="itemTemplate"
-    [notFoundTemplate]="notFoundTemplate">
-  </ng-autocomplete>
 
-  <ng-template #itemTemplate let-item>
-    <a [innerHTML]="item.name"></a>
-  </ng-template>
+<input #mydelegado class="form-check-input" type="radio" name="rol" id="rol" value="option1" (click)="limpiarCaja()" checked>
+<label class="form-check-label" for="inlineRadio1">Delegado</label>
 
-  <ng-template #notFoundTemplate let-notFound>
-    <div [innerHTML]="notFound"></div>
-  </ng-template>
-  </form>
-</div>
 <input #mycoordinador class="form-check-input" type="radio" name="rol" id="rol" value="option1" (click)="limpiarCaja()">
 <label class="form-check-label" for="inlineRadio2">Coordinador</label>
 
-<input #mydelegado class="form-check-input" type="radio" name="rol" id="rol" value="option1" (click)="limpiarCaja()" checked>
-              <label class="form-check-label" for="inlineRadio1">Delegado</label>
+<div class="ng-autocomplete">
+  <form [formGroup]="providerForm">
+    <ng-autocomplete [disabled]="!mydelegado.checked" [data]="countries" [searchKeyword]="keyword"
+      placeHolder="Delegado" formControlName="test" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </form>
+</div>
+
+<div class="ng-autocomplete">
+  <form [formGroup]="providerForm">
+    <ng-autocomplete [disabled]="!mycoordinador.checked" [data]="countries2" [searchKeyword]="keyword"
+      placeHolder="Coordinador" formControlName="test" [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </form>
+</div>
